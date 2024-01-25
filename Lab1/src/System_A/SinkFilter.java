@@ -31,9 +31,11 @@ public class SinkFilter extends FilterFramework
 
 	private String outputCSVPath;
 	private String[] csvHeaders = {"Time", "Velocity", "Altitude", "Pressure", "Temperature"};
+	private int decimalPlaces;
 
-	public SinkFilter(String outputCSVPath) {
+	public SinkFilter(String outputCSVPath, String decimalPlaces) {
 		this.outputCSVPath = outputCSVPath;
+		this.decimalPlaces = Integer.parseInt(decimalPlaces);
 	}
 
 	public void appendToCSV(String newData) {
@@ -83,7 +85,7 @@ public class SinkFilter extends FilterFramework
 		*************************************************************************************/
 		Calendar TimeStamp = Calendar.getInstance();
 		// SimpleDateFormat TimeStampFormat = new SimpleDateFormat("yyyy MM dd::hh:mm:ss:SSS");
-		SimpleDateFormat TimeStampFormat = new SimpleDateFormat("yyyy MM dd::hh:mm:ss:SS");
+		SimpleDateFormat TimeStampFormat = new SimpleDateFormat("yyyy:MM:dd:hh:mm:ss:SS");
 
 		int MeasurementLength = 8;		// This is the length of all measurements (including time) in bytes
 		int IdLength = 4;				// This is the length of IDs in the byte stream
@@ -161,7 +163,7 @@ public class SinkFilter extends FilterFramework
 
 				if( id >= 1 && id <= 3 ) // Velocity, Altitude, Pressure
 				{
-					curNewLine += truncateDouble(Double.longBitsToDouble(measurement), 5) + ",";
+					curNewLine += truncateDouble(Double.longBitsToDouble(measurement), decimalPlaces) + ",";
 				}
 
 				/****************************************************************************
@@ -177,7 +179,7 @@ public class SinkFilter extends FilterFramework
 					// System.out.print( TimeStampFormat.format(TimeStamp.getTime()) + " ID = " + id + " " + Double.longBitsToDouble(measurement) );
 					
 					// curNewLine += Double.longBitsToDouble(measurement); //.toString();
-					curNewLine += truncateDouble(Double.longBitsToDouble(measurement), 5); //.toString();
+					curNewLine += truncateDouble(Double.longBitsToDouble(measurement), decimalPlaces); //.toString();
 					appendToCSV(curNewLine);
 					curNewLine = "";
 				}
@@ -196,7 +198,7 @@ public class SinkFilter extends FilterFramework
 			catch (EndOfStreamException e)
 			{
 				ClosePorts();
-				System.out.print( "\n" + this.getName() + "::Sink Exiting; bytes read: " + bytesread );
+				System.out.print( "\n" + this.getName() + "::Sink Exiting; bytes read: " + bytesread);
 				break;
 			}
 		} // while

@@ -66,7 +66,14 @@ public class MiddleFilter extends FilterFramework
 		for (int i = 0; i < this.csvHeaders.length; i++) {
             headerLine += this.csvHeaders[i];
 			if( i + 1 < this.csvHeaders.length ) headerLine += ",";
-		} appendToCSV(headerLine);
+		} // appendToCSV(headerLine);
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.outputCSVPath, true))) {
+			writer.write(headerLine);
+			writer.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}	
 	}
 
 	private double truncateDouble(double value, int decimalPlaces) {
@@ -141,7 +148,7 @@ public class MiddleFilter extends FilterFramework
 	public void run()
     {
 		Calendar TimeStamp = Calendar.getInstance();
-		SimpleDateFormat TimeStampFormat = new SimpleDateFormat("yyyy MM dd::hh:mm:ss:SS");
+		SimpleDateFormat TimeStampFormat = new SimpleDateFormat("yyyy:MM:dd:hh:mm:ss:SS");
 
 		int MeasurementLength = 8;		// This is the length of all measurements (including time) in bytes
 		int IdLength = 4;				// This is the length of IDs in the byte stream

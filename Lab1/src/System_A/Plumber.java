@@ -25,7 +25,7 @@ public class Plumber
 		SourceFilter Filter1 = new SourceFilter();
 		MiddleFilter Filter2 = new MiddleFilter();
 		// SinkFilter Filter3 = new SinkFilter();
-		SinkFilter Filter3 = new SinkFilter(argv[0]);
+		SinkFilter Filter3 = new SinkFilter(argv[0], argv[1]);
 
 		/****************************************************************************
 		* Here we connect the filters starting with the sink filter (Filter 3) which
