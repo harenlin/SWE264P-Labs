@@ -12,4 +12,4 @@ Hao-Lun Lin (laolunl@uci.edu)
 
 #### System B
 1. Go to the directory of System B: ```cd src/System_B```.
-2. Run the command ```bash ./run.sh``` to generate the corresponding ```WildPoints.csv``` and ```OutputB.csv``` file in the same directory.
+2. Run the command ```bash ./run.sh``` to generate the corresponding ```WildPoints.csv``` and ```OutputB.csv``` files in the same directory.
