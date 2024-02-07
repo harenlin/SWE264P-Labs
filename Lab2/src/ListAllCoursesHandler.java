@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  * "List all courses" command event handler.
  */
+@SuppressWarnings("deprecation")
 public class ListAllCoursesHandler extends CommandEventHandler {
 
     /**

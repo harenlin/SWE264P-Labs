@@ -10,6 +10,7 @@ import java.util.ArrayList;
 /**
  * "List all students" command event handler.
  */
+@SuppressWarnings("deprecation")
 public class ListAllStudentsHandler extends CommandEventHandler {
 
     /**

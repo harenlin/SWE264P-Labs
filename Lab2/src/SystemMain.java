@@ -14,6 +14,7 @@ import java.io.IOException;
 /**
  * Class to hold system main method.
  */
+@SuppressWarnings("deprecation")
 class SystemMain {
 
 	/**
@@ -84,6 +85,7 @@ class SystemMain {
 
 			ClientInput objClientInput = new ClientInput();
 			ClientOutput objClientOutput = new ClientOutput();
+			Logger objLogger = new Logger("./log_file.txt");
 
 			// Start the system.
 			objClientInput.start();

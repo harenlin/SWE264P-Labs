@@ -1,5 +1,5 @@
 /**
- * @(#)ClientOutput.java
+ * @(#)Logger.java
  *
  * Copyright: Copyright (c) 2003 Carnegie Mellon University
  *
@@ -9,6 +9,10 @@
 import java.util.Observable;
 import java.util.Observer;
 
+import java.io.File;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * This class represents a client output component which is responsible for displaying text messages
@@ -20,15 +24,44 @@ import java.util.Observer;
  * @version 1.0
  */
 @SuppressWarnings("deprecation")
-public class ClientOutput implements Observer {
+public class Logger implements Observer {
+
+	private String log_file_path;
 
     /**
      * Constructs a client output component. A new client output component subscribes to show events
      * at the time of creation.
      */
-    public ClientOutput() {
+    public Logger(String log_file_path) {
+		// Set log file path.
+		this.log_file_path = log_file_path;
+
+		File file = new File(this.log_file_path);
+		if( file.exists() ) file.delete();
+        try {
+            file.createNewFile();
+            System.out.println("Log File Created: " + this.log_file_path);
+        } catch (IOException e) {
+            System.err.println("Error Creating Log File: " + e.getMessage());
+        }
+
         // Subscribe to SHOW event.
         EventBus.subscribeTo(EventBus.EV_SHOW, this);
+    }
+
+    /**
+     * Logger writes texts into the log file.
+     * 
+	 * @param param a parameter object of the event. (has been cast to appropriate data type)
+     */
+	@SuppressWarnings("unchecked")
+	private void writeTxt(String text) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.log_file_path, true))) {
+            writer.write(text);
+            writer.newLine();
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
     }
 
     /**
@@ -38,8 +71,10 @@ public class ClientOutput implements Observer {
      * @param event an event object. (caution: not to be directly referenced)
      * @param param a parameter object of the event. (to be cast to appropriate data type)
      */
+	@SuppressWarnings("unchecked")
     public void update(Observable event, Object param) {
         // Display the event parameter (a string) onto stdout.
-        System.out.println((String) param);
+        // System.out.println((String) param);
+		this.writeTxt(param.toString());
     }
 }

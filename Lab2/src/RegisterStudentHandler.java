@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 /**
  * "Register a student for a course" command event handler.
  */
+@SuppressWarnings("deprecation")
 public class RegisterStudentHandler extends CommandEventHandler {
 
     /**
@@ -59,5 +60,9 @@ public class RegisterStudentHandler extends CommandEventHandler {
         // Request validated. Proceed to register.
         this.objDataBase.makeARegistration(sSID, sCID, sSection);
         return "Successful!";
+
+        // Check for overbooked here
+        // Cannot directly write the checking here, but call self-defined component to check.@interface
+        
     }
 }

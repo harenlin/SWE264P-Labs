@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 /**
  * "List students who registered for a course" command event handler.
  */
+@SuppressWarnings("deprecation")
 public class ListStudentsRegisteredHandler extends CommandEventHandler {
 
     /**

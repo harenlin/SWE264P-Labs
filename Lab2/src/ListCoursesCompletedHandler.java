@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 /**
  * "List courses a student has completed" command event handler.
  */
+@SuppressWarnings("deprecation")
 public class ListCoursesCompletedHandler extends CommandEventHandler {
 
     /**
