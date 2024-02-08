@@ -25,13 +25,16 @@ class SystemMain {
 	 */
 	public static void main(String args[]) {
 		String studentFileName, courseFileName;
+		String logFileName;
 		// Check the number of parameters.
-		if (args.length == 2) {
+		if (args.length == 3) {
 			studentFileName = args[0];
 			courseFileName = args[1];
+			logFileName = args[2];
 		} else {
-			studentFileName = "bin/Students.txt";
-			courseFileName = "bin/Courses.txt";		
+			studentFileName = "./Students.txt";
+			courseFileName = "./Courses.txt";
+			logFileName = "./log_file.txt";
 		}
 
 		// Check if input files exists.
@@ -85,7 +88,7 @@ class SystemMain {
 
 			ClientInput objClientInput = new ClientInput();
 			ClientOutput objClientOutput = new ClientOutput();
-			Logger objLogger = new Logger("./log_file.txt");
+			Logger objLogger = new Logger(logFileName);
 
 			// Start the system.
 			objClientInput.start();

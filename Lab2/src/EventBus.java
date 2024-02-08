@@ -74,7 +74,12 @@ public class EventBus {
     /**
      * Command event #7 definition: check if the course is overbooked.
      */
-    public static final int EV_OVERBOOKED = 7;
+    public static final int EV_CHECK_OVERBOOKED = 7;
+
+    /**
+     * Command event #8 definition: check if student registration conflict.
+     */
+    public static final int EV_CHECK_CONFLICT = 8;
 
     /**
      * The number of defined events.
