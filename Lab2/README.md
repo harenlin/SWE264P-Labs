@@ -8,7 +8,7 @@ Hao-Lun Lin (laolunl@uci.edu)
 ### How to run
 1. Please go to ```./src/``` directory.
 2. Compile the codes: ```javac *.java```.
-3. Run the system with 3 input arguments: ```java SystemMain /path/to/Students.txt  /path/to/Courses.txt `/path/to/log.txt```.
+3. Run the system with 3 input arguments: ```java SystemMain /path/to/Students.txt  /path/to/Courses.txt /path/to/log.txt```.
 For example, 
 ```shell
 java SystemMain ./../test_env/Students.txt ./../test_env/Courses.txt ./../test_env/log_file.txt
