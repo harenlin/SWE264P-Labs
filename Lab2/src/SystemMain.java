@@ -85,8 +85,13 @@ class SystemMain {
 					db,
 					EventBus.EV_REGISTER_STUDENT,
 					EventBus.EV_SHOW);
-			CheckClassOverbooked objCommandEventHandler6_overbook = 
-				new CheckClassOverbooked(
+			CheckCourseConflictHandler objCommandEventHandler6_conflict = 
+				new CheckCourseConflictHandler(
+					db,
+					EventBus.EV_CHECK_CONFLICT,
+					EventBus.EV_SHOW);
+			CheckClassOverbookedHandler objCommandEventHandler6_overbook = 
+				new CheckClassOverbookedHandler(
 					db,
 					EventBus.EV_CHECK_OVERBOOKED,
 					EventBus.EV_SHOW);

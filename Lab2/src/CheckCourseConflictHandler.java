@@ -1,7 +1,7 @@
 /**
- * @(#)RegisterStudentHandler.java
+ * @(#) CheckCourseConflictHandler.java
  *
- * Copyright: Copyright (c) 2003,2004 Carnegie Mellon University
+ * Copyright: Copyright (c) 2024 University of California - Irvine
  *
  */
 
@@ -13,21 +13,21 @@ import java.util.StringTokenizer;
  * "Register a student for a course" command event handler.
  */
 @SuppressWarnings("deprecation")
-public class CheckClassOverbooked extends CommandEventHandler {
+public class CheckCourseConflictHandler extends CommandEventHandler {
 
     /**
-     * Construct "Register a student for a course" command event handler.
+     * Construct "Check if a student for a course having conflict" command event handler.
      *
      * @param objDataBase reference to the database object
      * @param iCommandEvCode command event code to receive the commands to process
      * @param iOutputEvCode output event code to send the command processing result
      */
-    public CheckClassOverbooked(DataBase objDataBase, int iCommandEvCode, int iOutputEvCode) {
+    public CheckCourseConflictHandler(DataBase objDataBase, int iCommandEvCode, int iOutputEvCode) {
         super(objDataBase, iCommandEvCode, iOutputEvCode);
     }
 
     /**
-     * Process "Register a student for a course" command event.
+     * Process "Check if a student for a course having conflict" command event.
      *
      * @param param a string parameter for command
      * @return a string result of command processing
@@ -43,16 +43,24 @@ public class CheckClassOverbooked extends CommandEventHandler {
         Student objStudent = this.objDataBase.getStudentRecord(sSID);
         Course objCourse = this.objDataBase.getCourseRecord(sCID, sSection);
         if (objStudent == null) {
-            return "Invalid student ID";
+            return ""; // "Invalid student ID";
         }
         if (objCourse == null) {
-            return "Invalid course ID or course section";
+            return ""; // "Invalid course ID or course section";
         }
 
-        String response = "";
-		if( objCourse != null && objCourse.getRegisteredStudents().size() > 3 ) {
-			response += "[Caution] Course Overbooked! ";
-		}
-		return response;	
+        // Check if the given course conflicts with any of the courses the student has registered.
+        ArrayList vCourse = objStudent.getRegisteredCourses();
+        for (int i=0; i<vCourse.size(); i++) {
+            if (((Course) vCourse.get(i)).conflicts(objCourse)) {
+                return "Registration conflicts";
+            }
+        }
+
+        // Request validated. Proceed to register.
+        this.objDataBase.makeARegistration(sSID, sCID, sSection);
+        return "Successful!";
+
+		// -> Will go to CheckClassOverbookedHandler
     }
 }
