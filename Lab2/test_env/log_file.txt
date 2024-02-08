@@ -69,9 +69,7 @@ Enter course ID and press return >>
 Enter course section and press return >> 
 
 
-
 Successful!
-
 
 Student Registration System
 
@@ -92,9 +90,7 @@ Enter course ID and press return >>
 Enter course section and press return >> 
 
 
-
 Successful!
-
 
 Student Registration System
 
@@ -115,9 +111,7 @@ Enter course ID and press return >>
 Enter course section and press return >> 
 
 
-
 Successful!
-
 
 Student Registration System
 
@@ -138,9 +132,7 @@ Enter course ID and press return >>
 Enter course section and press return >> 
 
 
-
-Successful!
-[Caution] Course Overbooked!
+Successful! - [Caution] Course Overbooked!
 
 Student Registration System
 
@@ -161,9 +153,7 @@ Enter course ID and press return >>
 Enter course section and press return >> 
 
 
-
-Registration conflicts
-
+Registration conflicts!
 
 Student Registration System
 

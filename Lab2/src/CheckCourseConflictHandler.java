@@ -33,8 +33,16 @@ public class CheckCourseConflictHandler extends CommandEventHandler {
      * @return a string result of command processing
      */
     protected String execute(String param) {
+		// System.out.println("Param in CONFLICT: " + param);
+
         // Parse the parameters.
         StringTokenizer objTokenizer = new StringTokenizer(param);
+		String valid_bit = objTokenizer.nextToken();
+		// Check if invalid 
+		if( valid_bit.equals("0") ){ 
+			return param;
+		}
+
         String sSID     = objTokenizer.nextToken();
         String sCID     = objTokenizer.nextToken();
         String sSection = objTokenizer.nextToken();
@@ -42,24 +50,18 @@ public class CheckCourseConflictHandler extends CommandEventHandler {
         // Get the student and course records.
         Student objStudent = this.objDataBase.getStudentRecord(sSID);
         Course objCourse = this.objDataBase.getCourseRecord(sCID, sSection);
-        if (objStudent == null) {
-            return ""; // "Invalid student ID";
-        }
-        if (objCourse == null) {
-            return ""; // "Invalid course ID or course section";
-        }
 
         // Check if the given course conflicts with any of the courses the student has registered.
         ArrayList vCourse = objStudent.getRegisteredCourses();
         for (int i=0; i<vCourse.size(); i++) {
             if (((Course) vCourse.get(i)).conflicts(objCourse)) {
-                return "Registration conflicts";
+                return "0 " + "Registration conflicts!";
             }
         }
 
         // Request validated. Proceed to register.
         this.objDataBase.makeARegistration(sSID, sCID, sSection);
-        return "Successful!";
+        return param; // "Successful!";
 
 		// -> Will go to CheckClassOverbookedHandler
     }

@@ -112,8 +112,8 @@ public class ClientInput extends Thread {
                     // Announce the command event #5 with student ID, course ID, and course section.
                     EventBus.announce(EventBus.EV_SHOW, "\n");
                     EventBus.announce(EventBus.EV_REGISTER_STUDENT, sSID + " " + sCID + " " + sSection);
-                    EventBus.announce(EventBus.EV_CHECK_CONFLICT, sSID + " " + sCID + " " + sSection);
-                    EventBus.announce(EventBus.EV_CHECK_OVERBOOKED, sSID + " " + sCID + " " + sSection);
+                    // EventBus.announce(EventBus.EV_CHECK_CONFLICT, sSID + " " + sCID + " " + sSection);
+                    // EventBus.announce(EventBus.EV_CHECK_OVERBOOKED, sSID + " " + sCID + " " + sSection);
 					// Call register -> check conflict -> check overbooked!
                     continue;
                 }

@@ -84,12 +84,14 @@ class SystemMain {
 				new RegisterStudentHandler(
 					db,
 					EventBus.EV_REGISTER_STUDENT,
-					EventBus.EV_SHOW);
+					EventBus.EV_CHECK_CONFLICT);
+					// EventBus.EV_SHOW);
 			CheckCourseConflictHandler objCommandEventHandler6_conflict = 
 				new CheckCourseConflictHandler(
 					db,
 					EventBus.EV_CHECK_CONFLICT,
-					EventBus.EV_SHOW);
+					EventBus.EV_CHECK_OVERBOOKED);
+					// EventBus.EV_SHOW);
 			CheckClassOverbookedHandler objCommandEventHandler6_overbook = 
 				new CheckClassOverbookedHandler(
 					db,

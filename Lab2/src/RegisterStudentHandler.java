@@ -43,13 +43,13 @@ public class RegisterStudentHandler extends CommandEventHandler {
         Student objStudent = this.objDataBase.getStudentRecord(sSID);
         Course objCourse = this.objDataBase.getCourseRecord(sCID, sSection);
         if (objStudent == null) {
-            return "Invalid student ID";
+            return "0 " + "Invalid student ID";
         }
         if (objCourse == null) {
-            return "Invalid course ID or course section";
+            return "0 " + "Invalid course ID or course section";
         }
 
-		return ""; // -> Will go to CheckCourseConflictHandler
+		return "1 " + param; // -> Will go to CheckCourseConflictHandler
 		
 		/* 
         // Check if the given course conflicts with any of the courses the student has registered.
