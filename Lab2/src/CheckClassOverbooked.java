@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
  * "Register a student for a course" command event handler.
  */
 @SuppressWarnings("deprecation")
-public class RegisterStudentHandler extends CommandEventHandler {
+public class CheckClassOverbooked extends CommandEventHandler {
 
     /**
      * Construct "Register a student for a course" command event handler.
@@ -22,7 +22,7 @@ public class RegisterStudentHandler extends CommandEventHandler {
      * @param iCommandEvCode command event code to receive the commands to process
      * @param iOutputEvCode output event code to send the command processing result
      */
-    public RegisterStudentHandler(DataBase objDataBase, int iCommandEvCode, int iOutputEvCode) {
+    public CheckClassOverbooked(DataBase objDataBase, int iCommandEvCode, int iOutputEvCode) {
         super(objDataBase, iCommandEvCode, iOutputEvCode);
     }
 
@@ -49,16 +49,10 @@ public class RegisterStudentHandler extends CommandEventHandler {
             return "Invalid course ID or course section";
         }
 
-        // Check if the given course conflicts with any of the courses the student has registered.
-        ArrayList vCourse = objStudent.getRegisteredCourses();
-        for (int i=0; i<vCourse.size(); i++) {
-            if (((Course) vCourse.get(i)).conflicts(objCourse)) {
-                return "Registration conflicts";
-            }
-        }
-
-        // Request validated. Proceed to register.
-        this.objDataBase.makeARegistration(sSID, sCID, sSection);
-        return "Successful!";
+        String response = "";
+		if( objCourse != null && objCourse.getRegisteredStudents().size() > 3 ) {
+			response += "[Caution] Course Overbooked! ";
+		}
+		return response;	
     }
 }

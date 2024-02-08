@@ -85,6 +85,11 @@ class SystemMain {
 					db,
 					EventBus.EV_REGISTER_STUDENT,
 					EventBus.EV_SHOW);
+			CheckClassOverbooked objCommandEventHandler6_overbook = 
+				new CheckClassOverbooked(
+					db,
+					EventBus.EV_CHECK_OVERBOOKED,
+					EventBus.EV_SHOW);
 
 			ClientInput objClientInput = new ClientInput();
 			ClientOutput objClientOutput = new ClientOutput();
