@@ -59,6 +59,9 @@ public class Server {
 			CheckClassOverbookedHandler checkClassOverbookedHandler = new CheckClassOverbookedHandler(db);
 			Naming.rebind("rmi://localhost:1999/checkClassOverbookedHandler", checkClassOverbookedHandler);
 
+			Logger logger = new Logger(logFileName);
+			Naming.rebind("rmi://localhost:1999/logger", logger);
+
 			System.err.println("Server ready");
 		} catch (Exception e) { 
 			System.err.println("Server exception: " + e.toString()); 
