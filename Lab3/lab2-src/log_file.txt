@@ -11,6 +11,24 @@ x) Exit
 
 Enter your choice and press return >> 
 
+Enter student ID and press return >> 
+
+
+EN121 Unknown
+IT211 Unknown
+
+Student Registration System
+
+1) List all students
+2) List all courses
+3) List students who registered for a course
+4) List courses a student has registered for
+5) List courses a student has completed
+6) Register a student for a course
+x) Exit
+
+Enter your choice and press return >> 
+
 
 G00123456 Carson Kit CS 1 CS112 CS211 CS332 CS421
 G00123432 Smith John ECE 0 EE112 EE211 CS421 EE432
@@ -49,111 +67,6 @@ CS475 c W 1830 2000 Weber Concurrent and Distributed Software Systems
 SWE443 a T 430 700 Hughs Software Architecture
 SWE443 b W 900 1030 Feiner Software Architecture
 SWE443 c F 1200 1330 Morgan Software Architecture
-
-Student Registration System
-
-1) List all students
-2) List all courses
-3) List students who registered for a course
-4) List courses a student has registered for
-5) List courses a student has completed
-6) Register a student for a course
-x) Exit
-
-Enter your choice and press return >> 
-
-Enter student ID and press return >> 
-
-Enter course ID and press return >> 
-
-Enter course section and press return >> 
-
-
-Successful!
-
-Student Registration System
-
-1) List all students
-2) List all courses
-3) List students who registered for a course
-4) List courses a student has registered for
-5) List courses a student has completed
-6) Register a student for a course
-x) Exit
-
-Enter your choice and press return >> 
-
-Enter student ID and press return >> 
-
-Enter course ID and press return >> 
-
-Enter course section and press return >> 
-
-
-Successful!
-
-Student Registration System
-
-1) List all students
-2) List all courses
-3) List students who registered for a course
-4) List courses a student has registered for
-5) List courses a student has completed
-6) Register a student for a course
-x) Exit
-
-Enter your choice and press return >> 
-
-Enter student ID and press return >> 
-
-Enter course ID and press return >> 
-
-Enter course section and press return >> 
-
-
-Successful!
-
-Student Registration System
-
-1) List all students
-2) List all courses
-3) List students who registered for a course
-4) List courses a student has registered for
-5) List courses a student has completed
-6) Register a student for a course
-x) Exit
-
-Enter your choice and press return >> 
-
-Enter student ID and press return >> 
-
-Enter course ID and press return >> 
-
-Enter course section and press return >> 
-
-
-Successful! - [Caution] Course Overbooked!
-
-Student Registration System
-
-1) List all students
-2) List all courses
-3) List students who registered for a course
-4) List courses a student has registered for
-5) List courses a student has completed
-6) Register a student for a course
-x) Exit
-
-Enter your choice and press return >> 
-
-Enter student ID and press return >> 
-
-Enter course ID and press return >> 
-
-Enter course section and press return >> 
-
-
-Registration conflicts!
 
 Student Registration System
 
