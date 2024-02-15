@@ -84,6 +84,14 @@ public class Client {
 					String sSection = objReader.readLine().trim();
 
 					System.out.println("6 called");
+					String middleRes = sSID + " " + sCID + " " + sSection;
+		   			IActivity stub1 = (IActivity) Naming.lookup("rmi://localhost:1999/registerStudentHandler");
+					middleRes = stub1.execute(middleRes);
+		   			IActivity stub2 = (IActivity) Naming.lookup("rmi://localhost:1999/checkCourseConflictHandler");
+					middleRes = stub2.execute(middleRes);
+		   			IActivity stub3 = (IActivity) Naming.lookup("rmi://localhost:1999/checkClassOverbookedHandler");
+					System.out.println(stub3.execute(middleRes));
+
 					continue;
 				}
 

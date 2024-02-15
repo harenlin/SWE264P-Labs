@@ -50,6 +50,15 @@ public class Server {
 			ListCoursesCompletedHandler listCoursesCompletedHandler = new ListCoursesCompletedHandler(db);
 			Naming.rebind("rmi://localhost:1999/listCoursesCompletedHandler", listCoursesCompletedHandler);
 
+			RegisterStudentHandler registerStudentHandler = new RegisterStudentHandler(db);
+			Naming.rebind("rmi://localhost:1999/registerStudentHandler", registerStudentHandler);
+
+			CheckCourseConflictHandler checkCourseConflictHandler = new CheckCourseConflictHandler(db);
+			Naming.rebind("rmi://localhost:1999/checkCourseConflictHandler", checkCourseConflictHandler);
+
+			CheckClassOverbookedHandler checkClassOverbookedHandler = new CheckClassOverbookedHandler(db);
+			Naming.rebind("rmi://localhost:1999/checkClassOverbookedHandler", checkClassOverbookedHandler);
+
 			System.err.println("Server ready");
 		} catch (Exception e) { 
 			System.err.println("Server exception: " + e.toString()); 
