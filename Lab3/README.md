@@ -11,7 +11,7 @@ Hao-Lun Lin (laolunl@uci.edu)
 3. Start rmi registry using the following command: ```rmiregistry 1999```.
 4. Open the 2nd cmd and navigate to the directory ```./src/```. 
 5. Start the server by running the following command: ```java Server```.
-6. Open the 3rd cmd and navigate to the directory ```./src/```..
+6. Open the 3rd cmd and navigate to the directory ```./src/```.
 7. Start the client by running the following command with the specific ```/path/to/log/file```: ```java Client ./log_file.txt```.
 
 ### Overbooking
