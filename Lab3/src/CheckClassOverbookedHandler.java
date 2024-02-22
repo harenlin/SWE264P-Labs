@@ -28,13 +28,6 @@ public class CheckClassOverbookedHandler extends UnicastRemoteObject implements 
         // Get the student and course records.
         Student objStudent = this.objDataBase.getStudentRecord(sSID);
         Course objCourse = this.objDataBase.getCourseRecord(sCID, sSection);
-        /* if (objStudent == null) {
-            return ""; // "Invalid student ID";
-        }
-        if (objCourse == null) {
-            return ""; // "Invalid course ID or course section";
-        } */
-
         String response = "Successful!";
 		if( objCourse != null && objCourse.getRegisteredStudents().size() > 3 ) {
 			response += " - [Caution] Course Overbooked!";

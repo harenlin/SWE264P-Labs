@@ -8,16 +8,17 @@ import java.io.FileNotFoundException;
 
 public class Server { 
 	public static void main(String args[]) {
-		String studentFileName, courseFileName, logFileName;
+		String studentFileName, courseFileName; // , logFileName;
+
 		// Check the number of parameters.
 		if (args.length == 3) {
 			studentFileName = args[0];
 			courseFileName = args[1];
-			logFileName = args[2];
+			// logFileName = args[2];
 		} else {
 			studentFileName = "./../db/Students.txt";
 			courseFileName = "./../db/Courses.txt";
-			logFileName = "./log_file.txt";
+			// logFileName = "./log_file.txt";
 		}
 
 		// Check if input files exists.
@@ -59,8 +60,8 @@ public class Server {
 			CheckClassOverbookedHandler checkClassOverbookedHandler = new CheckClassOverbookedHandler(db);
 			Naming.rebind("rmi://localhost:1999/checkClassOverbookedHandler", checkClassOverbookedHandler);
 
-			Logger logger = new Logger(logFileName);
-			Naming.rebind("rmi://localhost:1999/logger", logger);
+			// Logger logger = new Logger(logFileName);
+			// Naming.rebind("rmi://localhost:1999/logger", logger);
 
 			System.err.println("Server ready");
 		} catch (Exception e) { 

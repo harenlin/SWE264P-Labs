@@ -16,21 +16,22 @@ public class RegisterStudentHandler extends UnicastRemoteObject implements IActi
     public String execute(String param) {
 		// Parse the parameters.
         StringTokenizer objTokenizer = new StringTokenizer(param);
-        String sSID     = objTokenizer.nextToken();
+		String valid_bit = objTokenizer.nextToken();
+
+		// Check if invalid
+		if( valid_bit.equals("0") ){
+			return param;
+		}
+        
+		String sSID     = objTokenizer.nextToken();
         String sCID     = objTokenizer.nextToken();
         String sSection = objTokenizer.nextToken();
 
         // Get the student and course records.
-        Student objStudent = this.objDataBase.getStudentRecord(sSID);
-        Course objCourse = this.objDataBase.getCourseRecord(sCID, sSection);
-        if (objStudent == null) {
-            return "0 " + "Invalid student ID";
-        }
-        if (objCourse == null) {
-            return "0 " + "Invalid course ID or course section";
-        }
-		
-		return "1 " + param; // -> Will go to CheckCourseConflictHandler
+        // Student objStudent = this.objDataBase.getStudentRecord(sSID);
+        // Course objCourse = this.objDataBase.getCourseRecord(sCID, sSection);
+		this.objDataBase.makeARegistration(sSID, sCID, sSection);
+		return param;
     }
 }
 
