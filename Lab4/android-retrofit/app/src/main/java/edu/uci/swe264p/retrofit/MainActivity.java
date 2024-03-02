@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     static final String BASE_URL = "https://api.themoviedb.org/3/";
     static Retrofit retrofit = null;
     // final static String API_KEY = "YOUR_API_KEY";
+	// Change the api key first!
     final static String API_KEY = "5f7cb29d489bbbb86ca6e6d90f422eb2";
 
     @Override
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
+
         MovieApiService movieApiService = retrofit.create(MovieApiService.class);
         Call<Movie> call = movieApiService.getMovie(603, API_KEY);
         call.enqueue(new Callback<Movie>() {

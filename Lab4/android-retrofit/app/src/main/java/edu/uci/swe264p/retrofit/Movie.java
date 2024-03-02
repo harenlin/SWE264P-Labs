@@ -5,12 +5,16 @@ import com.google.gson.annotations.SerializedName;
 public class Movie {
     @SerializedName("vote_average")
     private Float voteAverage;
+
     @SerializedName("poster_path")
     private String posterPath;
+
     @SerializedName("title")
     private String title;
+
     @SerializedName("release_date")
     private String releaseDate;
+
     @SerializedName("overview")
     private String overview;
 
