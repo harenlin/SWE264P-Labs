@@ -15,6 +15,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     static final String TAG = MainActivity.class.getSimpleName();
@@ -70,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
                         response.body().getVoteAverage().toString(),
                         response.body().getOverview()
                 };
+				// System.out.println("Call here: "+ values.toString());
+                Log.d(TAG, "Call here: "+ Arrays.toString(values));
+
                 TextView tv;
                 for (int i=0; i < ids.length; i++) {
                     tv = findViewById(ids[i]);

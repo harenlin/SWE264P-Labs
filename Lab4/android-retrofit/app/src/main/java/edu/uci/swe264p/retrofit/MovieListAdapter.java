@@ -6,17 +6,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
-// import android.media.Image;
 import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
-// Implement this clas as the ProgramListAdadpter.java
-public class MovieListAdapter {
+// [Reference] https://developer.android.com/develop/ui/views/layout/recyclerview#java
+public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.ViewHolder> {
+
 	// Field
 	private List<Movie> mData;
 
 	// Constructor
-	ProgramListAdapter(List<Movie> data) {
+	MovieListAdapter(List<Movie> data) {
 		this.mData = data;
 	}
 
@@ -37,8 +37,10 @@ public class MovieListAdapter {
 		TextView tvVote;
 		TextView tvOverview;
 
-        ViewHolder(View itemView) {
+		ViewHolder(View itemView) {
             super(itemView);
+			// Define click listener for the ViewHolder's View
+
             this.ivMovie = itemView.findViewById(R.id.ivMovie);
             this.tvTitle = itemView.findViewById(R.id.tvTitle);
             this.tvReleaseDate = itemView.findViewById(R.id.tvReleaseDate);
@@ -47,17 +49,24 @@ public class MovieListAdapter {
         }
 	}
 
+
+	// Create new views (invoked by the layout manager)
 	@Override
-	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+	public MovieListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		// Create a new view, which defines the UI of the list item
 		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_row, parent, false);
 		return new ViewHolder(view);
 	}
 
+
+	// Replace the contents of a view (invoked by the layout manager)
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int position) {
+		// Get element from your dataset at this position and replace the contents of the view with that element
 		Movie movie = this.mData.get(position);
 		// URL for image retrieval: https://image.tmdb.org/t/p/w500/POSTER_PATH
 		// P.S. The first Character of POSTER_PATH is '/'
+		// https://square.github.io/picasso/
         Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath()).into(holder.ivMovie);
         holder.tvTitle.setText(movie.getTitle());
         holder.tvReleaseDate.setText(movie.getReleaseDate());
@@ -65,8 +74,10 @@ public class MovieListAdapter {
         holder.tvOverview.setText(movie.getOverview());
 	}
 
+
+	// Return the size of your dataset (invoked by the layout manager)
 	@Override
 	public int getItemCount() {
-		return mData.size();
+		return this.mData.size();
 	}
 }

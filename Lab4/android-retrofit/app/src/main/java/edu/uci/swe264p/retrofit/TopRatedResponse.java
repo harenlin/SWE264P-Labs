@@ -14,7 +14,7 @@ public class TopRatedResponse {
 	}
 
 	// Getter
-	public List<Movie> getResults(){ 
-		return results; 
+	public List<Movie> getTopRatedMovies(){
+		return this.results;
 	}
 }
